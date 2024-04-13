@@ -13,6 +13,12 @@ import java.util.ArrayList;
 public class LikedPlaylist extends Playlist {
     
     static Home home;
+
+    public static Home getHome() {
+        return home;
+    }
+
+    
     
     @Override
     public void move() {
@@ -31,6 +37,7 @@ public class LikedPlaylist extends Playlist {
     
    public LikedPlaylist(Home home) {
         this.home = home;
+        this.setHome(home);
         
     }
     

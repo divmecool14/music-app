@@ -12,6 +12,7 @@ public class MusicApp {
 
     public static void main(String[] args) {
         Home home = new Home();
+        home.setVisible(true);
         LikedPlaylist l = new LikedPlaylist(home);
         GenrePlaylist g = new GenrePlaylist(home);
         

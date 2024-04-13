@@ -47,53 +47,51 @@ abstract class Runnable extends Thread {
     //calls play
     //seconds by default should be 0
     
-    void play(){
-        if(seconds ==0){
-       int seconds =  (List.get(positionInArrayList)).getLength();//gets length of first song
-        }
-        while(pause == false){
-       while( seconds!= 0 ){
-           String strSeconds = ""+seconds;
-           home.changeSongDuration(strSeconds);
-            try {
-                    Thread.sleep(1000); // Sleep for 1 second
-                    seconds--; // Decrease the remaining length by 1 second
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-             }
-             if(positionInArrayList < List.size() ){
-           positionInArrayList+=1;
-            }
-            else{
-                positionInArrayList = 0;
-               int seconds =  (List.get(positionInArrayList)).getLength();
-            }
-        }
-       
-       
+        void play() {
+    // Check if the songList is empty
+    if (List.isEmpty()) {
+        System.out.println("No songs in the playlist.");
+        return;
     }
     
-    
-
-    // Concrete method to pause the currently playing song
-    void pause() {
-        if(pause == false){
-            pause = true;
-        }else{ 
-            pause = false;
-            play();
-        }
+    while (!pause) {
+        Song currentSong = List.get(positionInArrayList);
+        int seconds = currentSong.getLength();
         
-    }
+        for (int i = seconds; i > 0 && !pause; i--) {
+            // Check if the home object is null
+            if (home != null) {
+                home.changeSongDuration(String.valueOf(i));
+            } else {
+                System.out.println("Home object is not initialized.");
+                return;
+            }
+            
+            try {
+                Thread.sleep(1000); // Sleep for 1 second
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
-    // Concrete method to stop the song that is currently playing
-    void stopSong() {
-       pause = true;
-       seconds = 0;
-       
-       
+        if (!pause) {
+            positionInArrayList = (positionInArrayList + 1) % List.size();
+        }
     }
+}
+
+        void pause() {
+            pause = !pause;
+            if (!pause) {
+                play();
+            }
+        }
+
+        void stopSong() {
+            pause = true;
+            positionInArrayList = 0;
+            home.changeSongDuration("0");
+        }
 
     // Concrete method to move to the next song in the playlist
     void skip() {
