@@ -14,7 +14,7 @@ package com.mycompany.music.app;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Playlist implements PlaylistOperations {
+public abstract class Playlist extends Runnable implements PlaylistOperations  {
     protected List<Song> songs;
     protected String name;
 

@@ -12,6 +12,7 @@ public interface media {
     String getTitle();
     String getArtist();
     String getAlbum();
+    int getLength();
 }
 
 

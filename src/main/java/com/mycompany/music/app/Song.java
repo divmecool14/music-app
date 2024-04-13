@@ -13,11 +13,13 @@ public class Song implements media {
     private String title;
     private String artist;
     private String album;
+    private int length;
 
-    public Song(String title, String artist, String album) {
+    public Song(String title, String artist, String album,int length) {
         this.title = title;
         this.artist = artist;
         this.album = album;
+        this.length = length;
     }
 
     // Implementing methods from the Media interface
@@ -40,4 +42,10 @@ public class Song implements media {
     public String toString() {
         return title + " by " + artist + " [" + album + "]";
     }
+
+    @Override
+    public int getLength() {
+       return length;  
+    }
+    
 }
