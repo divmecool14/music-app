@@ -9,33 +9,35 @@ import java.util.ArrayList;
  *
  * @author divme
  */
-public class Song {
+public class Song implements media {
     private String title;
     private String artist;
     private String album;
-    
 
-    public Song(String title, String artist, String album ) {
+    public Song(String title, String artist, String album) {
         this.title = title;
         this.artist = artist;
         this.album = album;
-        
     }
-     // Getters
+
+    // Implementing methods from the Media interface
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public String getArtist() {
         return artist;
     }
 
+    @Override
     public String getAlbum() {
         return album;
     }
 
     @Override
     public String toString() {
-        return title + " by " + artist + " [" + album + ", " +   "]";
+        return title + " by " + artist + " [" + album + "]";
     }
 }

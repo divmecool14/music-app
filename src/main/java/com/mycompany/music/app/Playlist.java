@@ -26,9 +26,7 @@ public abstract class Playlist implements PlaylistOperations {
         songs.add(song);
     }
 
-    public boolean deleteSong(Song song) {
-        return songs.remove(song);
-    }
+   
 
     public void displayPlaylist() {
         System.out.println("Playlist: " + name);
@@ -45,5 +43,19 @@ public abstract class Playlist implements PlaylistOperations {
         return songs.size();
     }
 
-    
+      public static String searchSongDetailsByTitle(String titleToFind, ArrayList<Song> songs) {
+        StringBuilder details = new StringBuilder();
+        
+        for (Song song : songs) {
+            if (song.getTitle().equals(titleToFind)) {
+                // If the title matches, append details of the song to the result string
+                details.append("Title: ").append(song.getTitle()).append("\n");
+                details.append("Artist: ").append(song.getArtist()).append("\n");
+                details.append("Album: ").append(song.getAlbum()).append("\n");
+                // Add more details as needed, e.g., length, composer, etc.
+                return details.toString();
+            }
+        }
+        return "Song with title '" + titleToFind + "' not found.";
+    }    
 }

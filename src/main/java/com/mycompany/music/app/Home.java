@@ -4,6 +4,7 @@
  */
 package com.mycompany.music.app;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,10 +17,17 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    String area1 = "";
+    String area2 = "";
+    String area3 = "";
+     LikedPlaylist likedPlaylist;
+     GenrePlaylist genre1;
+     GenrePlaylist genre2;
     public Home() {
         initComponents();
-        LikedPlaylist likedPlaylist = new LikedPlaylist();
-        GenrePlaylist genre = new GenrePlaylist();
+         likedPlaylist = new LikedPlaylist();
+         genre1 = new GenrePlaylist();
+         genre2 = new GenrePlaylist();
       
         genrePlaylistList = new ArrayList<GenrePlaylist>();
         
@@ -62,10 +70,12 @@ public class Home extends javax.swing.JFrame {
         move1 = new javax.swing.JButton();
         emptyPlaylist = new javax.swing.JButton();
         emptyPlaylist1 = new javax.swing.JButton();
-        display1 = new javax.swing.JButton();
-        display = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         delete1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        delete2 = new javax.swing.JButton();
+        emptyPlaylist2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -99,6 +109,11 @@ public class Home extends javax.swing.JFrame {
         jLabel7.setText("search");
 
         search.setText("click to search for song");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,6 +150,7 @@ public class Home extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+        jTextArea1.setText(area1);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -149,6 +165,18 @@ public class Home extends javax.swing.JFrame {
         jLabel5.setText("song artist");
 
         jLabel6.setText("album");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         addToLiked.setText("click to add song to liked playlist");
         addToLiked.addActionListener(new java.awt.event.ActionListener() {
@@ -205,13 +233,19 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        jTextField1.setPreferredSize(new Dimension(100, 30));
+        jTextField2.setPreferredSize(new Dimension(100, 30));
+        jTextField3.setPreferredSize(new Dimension(100, 30));
+
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
+        jTextArea2.setText(area2);
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
+        jTextArea3.setText(area3);
 
         jLabel8.setText("liked playlist");
 
@@ -220,6 +254,11 @@ public class Home extends javax.swing.JFrame {
         jLabel10.setText("genre2");
 
         move.setText("move");
+        move.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveActionPerformed(evt);
+            }
+        });
 
         move1.setText("move");
         move1.addActionListener(new java.awt.event.ActionListener() {
@@ -229,16 +268,60 @@ public class Home extends javax.swing.JFrame {
         });
 
         emptyPlaylist.setText("empty");
+        emptyPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emptyPlaylistActionPerformed(evt);
+            }
+        });
 
         emptyPlaylist1.setText("empty");
-
-        display1.setText("display");
-
-        display.setText("display");
+        emptyPlaylist1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emptyPlaylist1ActionPerformed(evt);
+            }
+        });
 
         delete.setText("delete ");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         delete1.setText("delete ");
+        delete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("add");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        delete2.setText("delete ");
+        delete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete2ActionPerformed(evt);
+            }
+        });
+
+        emptyPlaylist2.setText("empty");
+        emptyPlaylist2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emptyPlaylist2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,34 +334,42 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(delete1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(move1))))
-                            .addComponent(emptyPlaylist)
-                            .addComponent(display1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(move))
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(emptyPlaylist1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(display, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(delete, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(delete2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(delete1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel8))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(move1))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(emptyPlaylist2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(emptyPlaylist)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(move))
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(emptyPlaylist1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(delete, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -290,24 +381,22 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(delete)
-                                    .addComponent(delete1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(display1)
-                                    .addComponent(display))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(emptyPlaylist)
-                                    .addComponent(emptyPlaylist1))
-                                .addGap(2, 2, 2)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(delete1)
+                            .addComponent(delete)
+                            .addComponent(delete2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emptyPlaylist)
+                            .addComponent(emptyPlaylist1)
+                            .addComponent(emptyPlaylist2))
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
@@ -318,8 +407,7 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                             .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane3))))
-                .addContainerGap())
+                            .addComponent(jScrollPane3)))))
         );
 
         pack();
@@ -334,12 +422,111 @@ public class Home extends javax.swing.JFrame {
      String album =  jTextField2.getText();
      String artist =  jTextField3.getText();
      Song newSong = new Song(title,artist,album);
+     likedPlaylist.addSong(newSong);
+     refreshGui();
+     
      
     }//GEN-LAST:event_addToLikedActionPerformed
 
     private void move1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_move1ActionPerformed
-        // TODO add your handling code here:
+     String text = genre1.getPlaylistnames();
+     String response = JOptionPane.showInputDialog(null,"which would you like to move?" + text);
+     genre2.addSong(genre1.move(response));
+     refreshGui();
+     
+     
     }//GEN-LAST:event_move1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Song lastAddedSong = likedPlaylist.getLastAddedSong();
+        if (lastAddedSong != null) {
+        genre1.addSong(lastAddedSong);
+        likedPlaylist.deleteLastAddedSong();
+        refreshGui();
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        genre2.addSong(likedPlaylist.getLastAddedSong());
+        likedPlaylist.deleteLastAddedSong();
+        refreshGui();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete1ActionPerformed
+        String text = genre1.getPlaylistnames();
+       
+      String response = JOptionPane.showInputDialog(null,"which would you like to delete?" + text);
+      genre1.deleteSongByTitle(response);
+      refreshGui();
+        
+    }//GEN-LAST:event_delete1ActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+       String text = genre2.getPlaylistnames();
+       
+      String response = JOptionPane.showInputDialog(null,"which would you like to delete?" + text);
+      genre2.deleteSongByTitle(response);
+      refreshGui();
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void emptyPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyPlaylistActionPerformed
+      genre1.empty();
+      refreshGui();
+    }//GEN-LAST:event_emptyPlaylistActionPerformed
+
+    private void emptyPlaylist1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyPlaylist1ActionPerformed
+     genre2.empty();
+     refreshGui();
+    }//GEN-LAST:event_emptyPlaylist1ActionPerformed
+
+    private void moveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveActionPerformed
+     String text = genre2.getPlaylistnames();
+     String response = JOptionPane.showInputDialog(null,"which would you like to move?" + text);
+     genre1.addSong(genre2.move(response));
+     refreshGui();
+    }//GEN-LAST:event_moveActionPerformed
+
+    private void delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete2ActionPerformed
+      String text = likedPlaylist.getPlaylistnames();
+       
+      String response = JOptionPane.showInputDialog(null,"which would you like to delete?" + text);
+      likedPlaylist.deleteSongByTitle(response);
+      refreshGui();
+    }//GEN-LAST:event_delete2ActionPerformed
+
+    private void emptyPlaylist2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyPlaylist2ActionPerformed
+        likedPlaylist.empty();
+        refreshGui();
+    }//GEN-LAST:event_emptyPlaylist2ActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        String response = JOptionPane.showInputDialog(null,"what song would you like to search");
+        String songData = likedPlaylist.searchSongDetailsByTitle(response, likedPlaylist.getSongs());
+    if (!songData.equals("Song with title '" + response + "' not found.")) {
+        JOptionPane.showMessageDialog(null, "Song found in 'Liked Playlist':\n" + songData);
+    } else {
+        songData = genre1.searchSongDetailsByTitle(response, genre1.getSongs());
+        if (!songData.equals("Song with title '" + response + "' not found.")) {
+            JOptionPane.showMessageDialog(null, "Song found in 'Genre 1 Playlist':\n" + songData);
+        } else {
+            songData = genre2.searchSongDetailsByTitle(response, genre2.getSongs());
+            if (!songData.equals("Song with title '" + response + "' not found.")) {
+                JOptionPane.showMessageDialog(null, "Song found in 'Genre 2 Playlist':\n" + songData);
+            } else {
+                JOptionPane.showMessageDialog(null, "Song with title '" + response + "' not found in any playlist.");
+            }
+        }
+    }
+        
+    }//GEN-LAST:event_searchActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,16 +562,29 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void refreshGui(){
+     area1 = likedPlaylist.getPlaylistnames();
+      area2 = genre1.getPlaylistnames();
+       area3 = genre2.getPlaylistnames();
+       jTextArea1.setText(area1);
+    jTextArea2.setText(area2);
+    jTextArea3.setText(area3);
+    revalidate();
+    repaint();
+    }
   
     private ArrayList<GenrePlaylist> genrePlaylistList;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToLiked;
     private javax.swing.JButton delete;
     private javax.swing.JButton delete1;
-    private javax.swing.JButton display;
-    private javax.swing.JButton display1;
+    private javax.swing.JButton delete2;
     private javax.swing.JButton emptyPlaylist;
     private javax.swing.JButton emptyPlaylist1;
+    private javax.swing.JButton emptyPlaylist2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
