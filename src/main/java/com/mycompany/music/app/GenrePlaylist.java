@@ -11,7 +11,9 @@ import java.util.ArrayList;
  * @author divme
  */
 public class GenrePlaylist extends Playlist {
-
+    
+    Home home;
+    
     @Override
     public boolean deleteSong(Song song) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -70,6 +72,9 @@ public class GenrePlaylist extends Playlist {
         songs = new ArrayList<>();
         
     }
+    public GenrePlaylist(Home home){
+        this.home = home;
+    }
 
 
     
@@ -90,6 +95,10 @@ public class GenrePlaylist extends Playlist {
     }
 
     public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+     public ArrayList<Song>  getArraylist() {
         return songs;
     }
 

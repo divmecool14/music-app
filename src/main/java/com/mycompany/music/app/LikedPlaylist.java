@@ -11,7 +11,9 @@ import java.util.ArrayList;
  * @author divme
  */
 public class LikedPlaylist extends Playlist {
-
+    
+    static Home home;
+    
     @Override
     public void move() {
         super.move(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
@@ -22,11 +24,15 @@ public class LikedPlaylist extends Playlist {
         super.displayPlaylist(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
      private ArrayList<Song> songs;
-    public LikedPlaylist() {
+   
+     public LikedPlaylist() {
        songs = new ArrayList<>();
     }
     
-   
+   public LikedPlaylist(Home home) {
+        this.home = home;
+        
+    }
     
     // Method to get the last song added to the playlist.
     public Song getLastAddedSong() {
@@ -96,6 +102,11 @@ public class LikedPlaylist extends Playlist {
     }
 
     public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    
+    public ArrayList<Song>  getArraylist() {
         return songs;
     }
     

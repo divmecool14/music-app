@@ -17,10 +17,12 @@ import java.util.List;
 public abstract class Playlist extends Runnable implements PlaylistOperations  {
     protected List<Song> songs;
     protected String name;
+    
 
     public Playlist() {
        
     }
+    
 
     public void addSong(Song song) {
         songs.add(song);
